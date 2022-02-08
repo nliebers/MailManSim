@@ -8,6 +8,9 @@ TagManager:
   - BluePill
   - package
   - deliveryarea
+  - projectile
+  - FxTemporaire
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -2820,6 +2820,23 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00039291382, y: 117.723564, z: 95.71977}
     m_Extent: {x: 58.907787, y: 196.29425, z: 116.85637}
   m_DirtyAABB: 0
+--- !u!1 &598201372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8148405167906055893, guid: 47eb45a52c33cb447a810b09830e2386, type: 3}
+  m_PrefabInstance: {fileID: 7474568967869104477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &598201374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598201372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3e2f6cea5a4fb0419a396086f14cd7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &606439428
 GameObject:
   m_ObjectHideFlags: 0
@@ -9622,5 +9639,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8245620390788220956, guid: 47eb45a52c33cb447a810b09830e2386, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 47eb45a52c33cb447a810b09830e2386, type: 3}

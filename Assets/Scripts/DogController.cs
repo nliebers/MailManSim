@@ -6,15 +6,20 @@ public class DogController : MonoBehaviour
 {
 	private float time = 10;
 	public GameObject eyes;
+	private bool huntingMode;
     // Update is called once per frame
     void FixedUpdate()
     {
-       if (time > 0) {
-		    time -= Time.deltaTime;
-	   }
-	   else {
-		    transform.Rotate(0, 180, 0);
-		    time += 10;
-	   }
+		GameObject LineofSight = GameObject.Find("LineofSight");
+		huntingMode = LineofSight.GetComponent<SeenDetector>().seen;
+		if (!huntingMode) {
+			if (time > 0) {
+				 time -= Time.deltaTime;
+			} 
+			else {
+				 transform.Rotate(0, 180, 0);
+				time += 10;
+		   }
+		}
 	}
 }

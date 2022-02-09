@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SeenDetector : MonoBehaviour
 {
+	public bool seen = false;
+	
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag == "Player") {
-            Debug.Log("Player seen");
+            seen = true;
         }
     }
 }

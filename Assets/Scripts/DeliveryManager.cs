@@ -11,11 +11,7 @@ public class DeliveryManager : MonoBehaviour
 	public Material completeMatieral;
 	public TextMeshProUGUI deliverCount1;
 	public TextMeshProUGUI deliverCount2;
-	public int packagesDelivered;
-	
-	private void Start() {
-		packagesDelivered = 0;
-	}
+	public GameObject houses;
 	
 	private void OnTriggerEnter(Collider other)
 	{
@@ -23,11 +19,11 @@ public class DeliveryManager : MonoBehaviour
 		if(other.transform.gameObject.name == correctDeliveryItem.name)
 		{
 			deliverySpace.GetComponent<MeshRenderer>().material = completeMatieral;
-			packagesDelivered += 1;
+			houses.GetComponent<DeliveryTrackerManager>().packagesDelivered += 1;
 			other.transform.gameObject.SetActive(false);
-			deliverCount1.text = "Delivered: " + packagesDelivered.ToString();
-			deliverCount2.text = "Delivered: " + packagesDelivered.ToString();
-			Debug.Log(packagesDelivered);
+			deliverCount1.text = "Delivered: " + houses.GetComponent<DeliveryTrackerManager>().packagesDelivered.ToString();
+			deliverCount2.text = "Delivered: " + houses.GetComponent<DeliveryTrackerManager>().packagesDelivered.ToString();
+			Debug.Log(houses.GetComponent<DeliveryTrackerManager>().packagesDelivered);
 		} 
 	}
 }

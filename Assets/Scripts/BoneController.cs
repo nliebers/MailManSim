@@ -5,11 +5,16 @@ using UnityEngine;
 public class BoneController : MonoBehaviour
 {
     public bool boneThrown = false;
+	Vector3 lastPos;
+	
+	void Start() {
+		lastPos = transform.position;
+	}
 
-    void OnTriggerEnter(Collider other) {
-        if (other.transform.gameObject.tag == "Player") {
-            GameObject dog = GameObject.Find("dog");
-            dog.GetComponent<MoveDestination>().huntingMode = false;
+    void Update() {
+        if (transform.position.x - lastPos.x > 0.1f) {
+            GameObject LineofSight = GameObject.Find("LineofSight");
+		    LineofSight.GetComponent<SeenDetector>().seen = false;
             boneThrown = true;
         }
     }

@@ -13,14 +13,14 @@ public class MoveDestination : MonoBehaviour
 		huntingMode = LineofSight.GetComponent<SeenDetector>().seen;
 		GameObject Bone = GameObject.Find("Dog_bone_low_poly");
 		boneThrown = Bone.GetComponent<BoneController>().boneThrown;
-		if (huntingMode)
+		if (LineofSight.GetComponent<SeenDetector>().seen)
 		{
 			UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 			agent.destination = player.transform.position;
 			float dist = Vector3.Distance(transform.position, player.transform.position);
 			if (dist < 1.0)
 			{
-				Debug.Log("Got caught");
+				float yeah = 1.0f;
 			}
 			else
 			{
@@ -32,7 +32,8 @@ public class MoveDestination : MonoBehaviour
 		}
 		else {
 			if (boneThrown) {
-				Debug.Log("Bone has been thrown");
+				UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+				agent.destination = Bone.transform.position;
 			}
 		}
 	}

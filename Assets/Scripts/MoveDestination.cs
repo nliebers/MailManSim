@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MoveDestination : MonoBehaviour
 {
     public GameObject player;
     public bool huntingMode;
 	public bool boneThrown;
+	public GameObject houses;
+	public TextMeshProUGUI deliverCount1;
+	public TextMeshProUGUI deliverCount2;
 	
 	void Update () {
 		GameObject LineofSight = GameObject.Find("LineofSight");
@@ -18,9 +22,14 @@ public class MoveDestination : MonoBehaviour
 			UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 			agent.destination = player.transform.position;
 			float dist = Vector3.Distance(transform.position, player.transform.position);
-			if (dist < 1.0)
+			if (dist <= 0.5f)
 			{
-				float yeah = 1.0f;
+				LineofSight.GetComponent<SeenDetector>().seen = false;
+				GameObject dog = GameObject.Find("angrydog");
+				dog.SetActive(false);
+				houses.GetComponent<DeliveryTrackerManager>().score -= 300;
+				deliverCount1.text = "Score: " + houses.GetComponent<DeliveryTrackerManager>().score.ToString();
+				deliverCount2.text = "Score: " + houses.GetComponent<DeliveryTrackerManager>().score.ToString();
 			}
 			else
 			{

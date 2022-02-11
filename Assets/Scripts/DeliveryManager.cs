@@ -12,6 +12,8 @@ public class DeliveryManager : MonoBehaviour
 	public TextMeshProUGUI deliverCount1;
 	public TextMeshProUGUI deliverCount2;
 	public GameObject houses;
+	public GameObject badEnding;
+	public GameObject goodEnding;
 	
 	private void OnTriggerEnter(Collider other)
 	{
@@ -20,10 +22,16 @@ public class DeliveryManager : MonoBehaviour
 		{
 			deliverySpace.GetComponent<MeshRenderer>().material = completeMatieral;
 			houses.GetComponent<DeliveryTrackerManager>().packagesDelivered += 1;
+			houses.GetComponent<DeliveryTrackerManager>().score += 100;
 			other.transform.gameObject.SetActive(false);
-			deliverCount1.text = "Delivered: " + houses.GetComponent<DeliveryTrackerManager>().packagesDelivered.ToString();
-			deliverCount2.text = "Delivered: " + houses.GetComponent<DeliveryTrackerManager>().packagesDelivered.ToString();
-			Debug.Log(houses.GetComponent<DeliveryTrackerManager>().packagesDelivered);
+			deliverCount1.text = "Score: " + houses.GetComponent<DeliveryTrackerManager>().score.ToString();
+			deliverCount2.text = "Score: " + houses.GetComponent<DeliveryTrackerManager>().score.ToString();
+			if (houses.GetComponent<DeliveryTrackerManager>().packagesDelivered == 8 && houses.GetComponent<DeliveryTrackerManager>().score <= 500){
+				badEnding.SetActive(true);
+			}
+			else if (houses.GetComponent<DeliveryTrackerManager>().packagesDelivered == 8){
+				goodEnding.SetActive(true);
+			}
 		} 
 	}
 }
